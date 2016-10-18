@@ -1,16 +1,18 @@
 #!/bin/bash
 
-#if [ -z "$1" ]
-#  then echo "Please provide the name of the game, e.g.  ./watch_pretrained breakout"; exit 0
-#fi
+if [ -z "$1" ]; then 
+  echo "Please provide the name of the game, e.g.  ./watch_pretrained breakout"
+  exit 0
+fi
 
-#if [ -z "$2" ]
-#  then echo "Please provide the pretrained network file, e.g.  ./watch_pretrained breakout DQN3_0_1_breakout_FULL_Y.t7"; exit 0
+#if [ -z "$2" ]; then 
+#  echo "Please provide gpu id"
+#  exit 0
 #fi
 
 GAME=$1
 IMAGE="DQN3_0_1_${GAME}_FULL_Y.t7"
-GPU=$2
+GPU=0
 
 if [ ! -d "./dqn/$GAME" ]; then
   mkdir "./dqn/$GAME"

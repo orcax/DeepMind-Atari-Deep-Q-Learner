@@ -86,7 +86,7 @@ for i=0,120 do
         
         -- choose the best action
         local action_index = agent:perceive(reward, screen, terminal, true, 0.05)
-        table.insert(action_hist, action_index)
+        table.insert(action_hist, game_actions[action_index])
 
         -- play game in test mode (episodes don't end when losing a life)
         screen, reward, terminal = game_env:step(game_actions[action_index], false)
