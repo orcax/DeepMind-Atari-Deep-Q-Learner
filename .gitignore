@@ -1,5 +1,4 @@
 *~
 torch
 dqn/*.t7
-
-dqn/breakout
+dqn/breakout/
