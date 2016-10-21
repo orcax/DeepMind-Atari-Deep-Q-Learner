@@ -1,5 +1,10 @@
-*~
-torch
+torch/
+gifs/
+
 dqn/*.t7
 dqn/breakout/
-gifs/
+dqn/freeway/
+dqn/ms_pacman/
+dqn/qbert/
+dqn/seaquest/
+dqn/space_invaders/
