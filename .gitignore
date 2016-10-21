@@ -1,6 +1,4 @@
 torch/
-gifs/
-
 dqn/*.t7
 dqn/breakout/
 dqn/freeway/
