@@ -20,10 +20,10 @@ def create_act_idx(data_dir):
         acts = []
         with open(act_file, 'r') as f:
             acts = [int(l.strip()) for l in f.readlines()]
-        if not act_map:
-            act_key = sorted(list(set(acts)))
-            act_val = range(len(act_key))
-            act_map = dict(zip(act_key, act_val))
+        act_key = sorted(list(set(acts)))
+        act_val = range(len(act_key))
+        for i in range(len(act_key)):
+            act_map[act_key[i]] = act_val[i]
         with open(act_idx_file, 'w') as f:
             f.writelines([str(act_map[a])+'\n' for a in acts])
 
@@ -41,17 +41,22 @@ def compute_mean(data_dir):
     for d in glob.glob(data_dir + '/*'):
         for im in glob.glob(d + '/*.png'):
             im = cv2.imread(im, cv2.IMREAD_COLOR)
-            im = im / 255.0
             sumfile += im
             count += 1
 
     meanfile = sumfile / count
-    np.save(data_dir + '/mean.npy', meanfile * 255.0)
-    cv2.imwrite(data_dir + '/mean.png', meanfile * 255.0)
-    meanblob = meanfile.transpose((2,0,1))
+    np.save(data_dir + '/mean.npy', meanfile)
+    cv2.imwrite(data_dir + '/mean.png', meanfile)
+
+    meanblob = np.zeros((1, 3, 210, 160), dtype=np.float)
+    meanblob[0,:] = meanfile.transpose((2,0,1))
     meanblob = array_to_blobproto(meanblob)
     with open(data_dir + '/mean.binaryproto', 'wb') as f:
         f.write(meanblob.SerializeToString())
+    # [Tips] How to convert string to blob?
+    # from caffe.proto import caffe_pb2
+    # blob = caffe_pb2.BlobProto()
+    # blob.ParseFromString(string)
 
 def main():
     assert len(sys.argv) > 1
