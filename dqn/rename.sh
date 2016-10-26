@@ -6,6 +6,12 @@ if [ -z $1 ]; then
 fi
 game=$1
 
-for i in {00..20}; do
-  mv "./$game/test/01$i" "./$game/test/00$i"
+cd $game
+mkdir train test
+mv 000* train  # NEED CHANGE!
+mv 001* test  # NEED CHANGE!
+
+for i in {0..2}  # NEED CHANGE!
+do
+  mv "test/001$i" "test/000$i"  # NEED CHANGE!
 done

@@ -57,7 +57,7 @@ end
 local gif_filename = opt.gif_file
 local gamename = opt.env
 
-for i=0,120 do
+for i=0,12 do
     print("Start playing episode " .. i)
     -- start a new game
     local screen, reward, terminal = game_env:newGame()
