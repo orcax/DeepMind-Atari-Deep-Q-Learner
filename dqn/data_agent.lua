@@ -84,8 +84,8 @@ for i=0,120 do
         -- if action was chosen randomly, Q-value is 0
         agent.bestq = 0
         
-        -- choose the best action
-        local action_index = agent:perceive(reward, screen, terminal, true, 0.05)
+        -- choose the best action with epsilon=0.3
+        local action_index = agent:perceive(reward, screen, terminal, true, 0.3)
         table.insert(action_hist, game_actions[action_index])
 
         -- play game in test mode (episodes don't end when losing a life)

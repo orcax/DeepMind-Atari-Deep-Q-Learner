@@ -5,7 +5,7 @@ import os.path
 import sys
 import cv2
 import numpy as np
-sys.path.append('/home/yx150/Documents/nips2015-action-conditional-video-prediction/caffe/python')
+sys.path.append('/home/yikun/Workspaces/nips2015-action-conditional-video-prediction/caffe/python')
 import caffe
 from caffe.io import array_to_blobproto
 
