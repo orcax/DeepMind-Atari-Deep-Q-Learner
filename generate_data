@@ -5,14 +5,14 @@ if [ -z "$1" ]; then
   exit 0
 fi
 
-#if [ -z "$2" ]; then 
-#  echo "Please provide gpu id"
-#  exit 0
-#fi
+if [ -z "$2" ]; then 
+  echo "Please provide gpu id"
+  exit 0
+fi
 
 GAME=$1
 IMAGE="DQN3_0_1_${GAME}_FULL_Y.t7"
-GPU=0
+GPU=$2
 
 if [ ! -d "./dqn/$GAME" ]; then
   mkdir "./dqn/$GAME"
